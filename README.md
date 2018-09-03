@@ -1,5 +1,5 @@
 # LoraInternOnline
-Online Version of Visualizing data of Lora Gateway DataBase
+Online Version of Visualizing data of Lora Gateway DataBase -> https://lorainternonline.azurewebsites.net/
 
 # Introduction :laughing:
 Hey guys Hank here! This project is for Dr Pu's Lora Internet of Things Network Internship Project! If you have any questions please ask!
@@ -8,13 +8,11 @@ Hey guys Hank here! This project is for Dr Pu's Lora Internet of Things Network 
 1. Download the zip code of this file, then extract it.
 1. Alternatively you can fork this project and open in Visual Studios and use the Team Explorer in Visual Studios to help you clone the entire project.
 2. Once finished, right click LoraInternOnline file and select "open in visual studios". Then go View->Solution Explorer and double click the LoraIntern.sln file.
-3. The solution viewer will change, and a Solution 'LoraIntern'(1 project) should appear. Right click it and press Build Solution.
+3. The solution viewer will change, and a Solution 'LoraInternOnline'(1 project) should appear. Right click it and press Build Solution.
 
 # Build and Test
-1. Select x64 for your Debug Target anf then click Debug(the green play button). If your code works, it should work on your raspberry pi too.
-2. To run it on your Raspbery Pi, you need to have your rpi flashed with Windows Iot Core -> https://developer.microsoft.com/en-us/windows/iot/downloads
-3. After flashing it, when Windows Iot Core is fully loaded, go back to Visual Studios on your computer and select ARM, select Remote Machine, and click the green play button again(it should ask for the device's ip address)
-4. Wait, remote device usually takes a longer time :)
+1. Select x64 for your Debug Target and then click Debug(the green play button). If your code works, you will see your browser initializing and then a web page will appear on localhost.
+2. To run it online, you need to create a Web App with Azure.
 
 # Contribute (Will write this when I am finishing my internship)
 1. 
