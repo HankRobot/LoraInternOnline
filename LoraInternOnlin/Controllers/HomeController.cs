@@ -40,12 +40,15 @@ namespace LoraInternOnlin.Controllers
             var dusttimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var dustvaluelist1 = lorarecords.Select(i => i.Dust).ToArray();
 
-            var dustchart = new Chart(width: 1000, height: 200)
+            var dustchart = new Chart(width: 1000, height: 300)
+                .AddLegend("Lora Clients")
                 .AddSeries(
+                name: "Hank",
                 chartType: "line",
                 xValue: dusttimelist,
                 yValues: dustvaluelist)
                 .AddSeries(
+                name: "Lora",
                 chartType: "line",
                 xValue: dusttimelist1,
                 yValues: dustvaluelist1)
@@ -66,12 +69,15 @@ namespace LoraInternOnlin.Controllers
             var uvtimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var uvvaluelist1 = lorarecords.Select(i => i.UV).ToArray();
 
-            var uvchart = new Chart(width: 1000, height: 200)
+            var uvchart = new Chart(width: 1000, height: 300)
+                .AddLegend("Lora Clients")
                 .AddSeries(
+                name:"Hank",
                 chartType: "line",
                 xValue: uvtimelist,
                 yValues: uvvaluelist)
                 .AddSeries(
+                name:"Lora",
                 chartType: "line",
                 xValue: uvtimelist1,
                 yValues: uvvaluelist1)
@@ -92,12 +98,15 @@ namespace LoraInternOnlin.Controllers
             var temptimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var tempvaluelist1 = lorarecords.Select(i => i.Temp).ToArray();
 
-            var tempchart = new Chart(width: 1000, height: 200)
+            var tempchart = new Chart(width: 1000, height: 300)
+                .AddLegend("Lora Clients")
                 .AddSeries(
+                name: "Hank",
                 chartType: "line",
                 xValue: temptimelist,
                 yValues: tempvaluelist)
                 .AddSeries(
+                name: "Lora",
                 chartType: "line",
                 xValue: temptimelist1,
                 yValues: tempvaluelist1)
@@ -118,12 +127,15 @@ namespace LoraInternOnlin.Controllers
             var prestimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var presvaluelist1 = lorarecords.Select(i => i.Pressure).ToArray();
 
-            var dustchart = new Chart(width: 1000, height: 200)
+            var dustchart = new Chart(width: 1000, height: 300)
+                .AddLegend("Lora Clients")
                 .AddSeries(
+                name: "Hank",
                 chartType: "line",
                 xValue: prestimelist,
                 yValues: presvaluelist)
                 .AddSeries(
+                name: "Lora",
                 chartType: "line",
                 xValue: prestimelist1,
                 yValues: presvaluelist1)
@@ -144,12 +156,15 @@ namespace LoraInternOnlin.Controllers
             var humtimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var humvaluelist1 = lorarecords.Select(i => i.Humidity).ToArray();
 
-            var dustchart = new Chart(width: 1000, height: 200)
+            var dustchart = new Chart(width: 1000, height: 300)
+                .AddLegend("Lora Clients")
                 .AddSeries(
+                name: "Hank",
                 chartType: "line",
                 xValue: humtimelist,
                 yValues: humvaluelist)
                 .AddSeries(
+                name: "Lora",
                 chartType: "line",
                 xValue: humtimelist1,
                 yValues: humvaluelist1)
@@ -170,12 +185,15 @@ namespace LoraInternOnlin.Controllers
             var rssitimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var rssivaluelist1 = lorarecords.Select(i => i.RSSI).ToArray();
 
-            var presschart = new Chart(width: 1000, height: 200)
+            var presschart = new Chart(width: 1000, height: 300)
+                .AddLegend("Lora Clients")
                 .AddSeries(
+                name: "Hank",
                 chartType: "line",  
                 xValue: rssitimelist,
                 yValues: rssivaluelist)
                 .AddSeries(
+                name: "Lora",
                 chartType: "line",
                 xValue: rssitimelist1,
                 yValues: rssivaluelist1)
