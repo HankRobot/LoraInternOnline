@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoraInternOnlin", "LoraInternOnlin\LoraInternOnlin.csproj", "{78239C6E-41A0-42C0-B0DD-9EAE4C9592E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoraInternOnline", "LoraInternOnlin\LoraInternOnline.csproj", "{78239C6E-41A0-42C0-B0DD-9EAE4C9592E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
