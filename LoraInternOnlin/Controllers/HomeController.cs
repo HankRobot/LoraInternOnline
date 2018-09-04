@@ -252,8 +252,8 @@ namespace LoraInternOnlin.Controllers
         {
             SqlConnectionStringBuilder sql = new SqlConnectionStringBuilder();
 
-            string retrieve = string.Format("select * from (select Row_Number() over (order by TIMESUBMIT) as RowIndex, * from LORA_TABLE) as Sub Where Sub.RowIndex >= {0} and Sub.RowIndex <= {1};", 0, 1000000);
-
+            //string retrieve = string.Format("select * from (select Row_Number() over (order by TIMESUBMIT) as RowIndex, * from LORA_TABLE) as Sub Where Sub.RowIndex >= {0} and Sub.RowIndex <= {1};", 0, 1000000);
+            string retrieve = "SELECT * FROM LORA_TABLE;";
             //list for client "HANK"
             List<SensorData> hankrecords = new List<SensorData>();
 
@@ -278,31 +278,31 @@ namespace LoraInternOnlin.Controllers
                     {
                         while (reader.Read())
                         {
-                            DateTime time = reader.GetDateTime(3);
-                            if (reader.GetString(1) == "HANK")
+                            DateTime time = reader.GetDateTime(2);
+                            if (reader.GetString(0) == "HANK")
                             {
                                 hankrecords.Add(new SensorData()
                                 {
                                     Time = time,
-                                    Dust = reader.GetValue(4),
-                                    UV = reader.GetValue(5),
-                                    Temp = reader.GetValue(6),
-                                    Pressure = reader.GetValue(7),
-                                    Humidity = reader.GetValue(8),
-                                    RSSI = reader.GetValue(9)
+                                    Dust = reader.GetValue(3),
+                                    UV = reader.GetValue(4),
+                                    Temp = reader.GetValue(5),
+                                    Pressure = reader.GetValue(6),
+                                    Humidity = reader.GetValue(7),
+                                    RSSI = reader.GetValue(8)
                                 });
                             }
-                            if (reader.GetString(1) == "LORA")
+                            if (reader.GetString(0) == "LORA")
                             {
                                 lorarecords.Add(new SensorData()
                                 {
                                     Time = time,
-                                    Dust = reader.GetValue(4),
-                                    UV = reader.GetValue(5),
-                                    Temp = reader.GetValue(6),
-                                    Pressure = reader.GetValue(7),
-                                    Humidity = reader.GetValue(8),
-                                    RSSI = reader.GetValue(9)
+                                    Dust = reader.GetValue(3),
+                                    UV = reader.GetValue(4),
+                                    Temp = reader.GetValue(5),
+                                    Pressure = reader.GetValue(6),
+                                    Humidity = reader.GetValue(7),
+                                    RSSI = reader.GetValue(8)
                                 });
                             }
                         }
