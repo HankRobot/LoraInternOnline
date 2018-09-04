@@ -1,6 +1,18 @@
 ﻿@{
     ViewBag.Title = "UoSM LoRaWAN Gateway";
 }
+<asp:HiddenField id="width" runat="server"/>
+<asp:HiddenField id="height" runat="server" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#width").val($(window).width());
+        $("#height").val($(window).height());
+
+    });
+</script>
+
 
 <div class="jumbotron">
     <h1>RaspBerry Pi Lora Gateway</h1>
