@@ -1,18 +1,6 @@
 ﻿@{
     ViewBag.Title = "UoSM LoRaWAN Gateway";
 }
-<asp:HiddenField id="width" runat="server"/>
-<asp:HiddenField id="height" runat="server" />
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $("#width").val($(window).width());
-        $("#height").val($(window).height());
-
-    });
-</script>
-
 
 <div class="jumbotron">
     <h1>RaspBerry Pi Lora Gateway</h1>
@@ -32,7 +20,7 @@
 
 <div class="jumbotron">
     <p class="lead">Temperature(°C)</p>
-    <img src="@Url.Action("tempChart")"/>
+    <img src="@Url.Action("tempChart")" />
 </div>
 
 <div class="jumbotron">
@@ -42,7 +30,7 @@
 
 <div class="jumbotron">
     <p class="lead">Humidity(%)</p>
-    <img src="@Url.Action("humChart")"/>
+    <img src="@Url.Action("humChart")" />
 </div>
 
 <div class="jumbotron">

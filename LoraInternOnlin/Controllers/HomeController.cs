@@ -31,10 +31,6 @@ namespace LoraInternOnlin.Controllers
 
         public ActionResult dustChart()
         {
-            var width = Request.Browser.ScreenPixelsWidth;
-
-            Debug.WriteLine(width);
-
             var tuple = ConnectSQL();
             var hankrecords = tuple.Item1;
             var lorarecords = tuple.Item2;
@@ -45,7 +41,7 @@ namespace LoraInternOnlin.Controllers
             var dusttimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var dustvaluelist1 = lorarecords.Select(i => i.Dust).ToArray();
 
-            var dustchart = new Chart(width: width, height: 300)
+            var dustchart = new Chart(width: 1000, height: 300)
                 .AddLegend("Lora Clients")
                 .AddSeries(
                 name: "Hank",
