@@ -41,19 +41,7 @@ namespace LoraInternOnlin.Controllers
             var dusttimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var dustvaluelist1 = lorarecords.Select(i => i.Dust).ToArray();
 
-            var dustchart = new Chart(width: 1000, height: 300)
-                .AddLegend("Lora Clients")
-                .AddSeries(
-                name: "Hank",
-                chartType: "line",
-                xValue: dusttimelist,
-                yValues: dustvaluelist)
-                .AddSeries(
-                name: "Lora",
-                chartType: "line",
-                xValue: dusttimelist1,
-                yValues: dustvaluelist1)
-                .Write("png");
+            var rssichart = CreateChart(dusttimelist, dustvaluelist, dusttimelist1, dustvaluelist1);
 
             return null;
         }
@@ -70,19 +58,7 @@ namespace LoraInternOnlin.Controllers
             var uvtimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var uvvaluelist1 = lorarecords.Select(i => i.UV).ToArray();
 
-            var uvchart = new Chart(width: 1000, height: 300)
-                .AddLegend("Lora Clients")
-                .AddSeries(
-                name:"Hank",
-                chartType: "line",
-                xValue: uvtimelist,
-                yValues: uvvaluelist)
-                .AddSeries(
-                name:"Lora",
-                chartType: "line",
-                xValue: uvtimelist1,
-                yValues: uvvaluelist1)
-                .Write("png");
+            var rssichart = CreateChart(uvtimelist, uvvaluelist, uvtimelist1, uvvaluelist1);
 
             return null;
         }
@@ -99,19 +75,7 @@ namespace LoraInternOnlin.Controllers
             var temptimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var tempvaluelist1 = lorarecords.Select(i => i.Temp).ToArray();
 
-            var tempchart = new Chart(width: 1000, height: 300)
-                .AddLegend("Lora Clients")
-                .AddSeries(
-                name: "Hank",
-                chartType: "line",
-                xValue: temptimelist,
-                yValues: tempvaluelist)
-                .AddSeries(
-                name: "Lora",
-                chartType: "line",
-                xValue: temptimelist1,
-                yValues: tempvaluelist1)
-                .Write("png");
+            var rssichart = CreateChart(temptimelist, tempvaluelist, temptimelist1, tempvaluelist1);
 
             return null;
         }
@@ -128,19 +92,7 @@ namespace LoraInternOnlin.Controllers
             var prestimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var presvaluelist1 = lorarecords.Select(i => i.Pressure).ToArray();
 
-            var dustchart = new Chart(width: 1000, height: 300)
-                .AddLegend("Lora Clients")
-                .AddSeries(
-                name: "Hank",
-                chartType: "line",
-                xValue: prestimelist,
-                yValues: presvaluelist)
-                .AddSeries(
-                name: "Lora",
-                chartType: "line",
-                xValue: prestimelist1,
-                yValues: presvaluelist1)
-                .Write("png");
+            var preschart = CreateChart(prestimelist, presvaluelist, prestimelist1, presvaluelist1);
 
             return null;
         }
@@ -157,19 +109,7 @@ namespace LoraInternOnlin.Controllers
             var humtimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var humvaluelist1 = lorarecords.Select(i => i.Humidity).ToArray();
 
-            var dustchart = new Chart(width: 1000, height: 300)
-                .AddLegend("Lora Clients")
-                .AddSeries(
-                name: "Hank",
-                chartType: "line",
-                xValue: humtimelist,
-                yValues: humvaluelist)
-                .AddSeries(
-                name: "Lora",
-                chartType: "line",
-                xValue: humtimelist1,
-                yValues: humvaluelist1)
-                .Write("png");
+            var humchart = CreateChart(humtimelist, humvaluelist, humtimelist1, humvaluelist1);
 
             return null;
         }
@@ -186,20 +126,8 @@ namespace LoraInternOnlin.Controllers
             var rssitimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var rssivaluelist1 = lorarecords.Select(i => i.RSSI).ToArray();
 
-            var presschart = new Chart(width: 1000, height: 300)
-                .AddLegend("Lora Clients")
-                .AddSeries(
-                name: "Hank",
-                chartType: "line",  
-                xValue: rssitimelist,
-                yValues: rssivaluelist)
-                .AddSeries(
-                name: "Lora",
-                chartType: "line",
-                xValue: rssitimelist1,
-                yValues: rssivaluelist1)
-                .Write("png");
-
+            var rssichart = CreateChart(rssitimelist, rssivaluelist, rssitimelist1, rssivaluelist1);
+                
             return null;
         }
 
@@ -252,8 +180,20 @@ namespace LoraInternOnlin.Controllers
         {
             SqlConnectionStringBuilder sql = new SqlConnectionStringBuilder();
 
+            DateTime date = DateTime.Now.AddDays(-7);
+            DateTime date2 = DateTime.Now;
+
+            Debug.WriteLine(date, "date a week ago");
+            Debug.WriteLine(date2, "today");
+
             //string retrieve = string.Format("select * from (select Row_Number() over (order by TIMESUBMIT) as RowIndex, * from LORA_TABLE) as Sub Where Sub.RowIndex >= {0} and Sub.RowIndex <= {1};", 0, 1000000);
-            string retrieve = "SELECT * FROM LORA_TABLE;";
+            //string retrieve = "SELECT * FROM LORA_TABLE;";
+
+            string retrieve = string.Format("select * from(select Row_Number() over (order by TIMESUBMIT) as RowIndex, * from LORA_TABLE) " +
+                "as Sub where TimeSubmit >= '{0}' and TimeSubmit <='{1}';", date.ToString("MM-dd-yyyy HH:mm:ss"), date2.ToString("MM-dd-yyyy HH:mm:ss"));
+
+            Debug.WriteLine(retrieve, "sql test");
+
             //list for client "HANK"
             List<SensorData> hankrecords = new List<SensorData>();
 
@@ -278,31 +218,31 @@ namespace LoraInternOnlin.Controllers
                     {
                         while (reader.Read())
                         {
-                            DateTime time = reader.GetDateTime(2);
-                            if (reader.GetString(0) == "HANK")
+                            DateTime time = reader.GetDateTime(3);
+                            if (reader.GetString(1) == "HANK")
                             {
                                 hankrecords.Add(new SensorData()
                                 {
                                     Time = time,
-                                    Dust = reader.GetValue(3),
-                                    UV = reader.GetValue(4),
-                                    Temp = reader.GetValue(5),
-                                    Pressure = reader.GetValue(6),
-                                    Humidity = reader.GetValue(7),
-                                    RSSI = reader.GetValue(8)
+                                    Dust = reader.GetValue(4),
+                                    UV = reader.GetValue(5),
+                                    Temp = reader.GetValue(6),
+                                    Pressure = reader.GetValue(7),
+                                    Humidity = reader.GetValue(8),
+                                    RSSI = reader.GetValue(9)
                                 });
                             }
-                            if (reader.GetString(0) == "LORA")
+                            if (reader.GetString(1) == "LORA")
                             {
                                 lorarecords.Add(new SensorData()
                                 {
                                     Time = time,
-                                    Dust = reader.GetValue(3),
-                                    UV = reader.GetValue(4),
-                                    Temp = reader.GetValue(5),
-                                    Pressure = reader.GetValue(6),
-                                    Humidity = reader.GetValue(7),
-                                    RSSI = reader.GetValue(8)
+                                    Dust = reader.GetValue(4),
+                                    UV = reader.GetValue(5),
+                                    Temp = reader.GetValue(6),
+                                    Pressure = reader.GetValue(7),
+                                    Humidity = reader.GetValue(8),
+                                    RSSI = reader.GetValue(9)
                                 });
                             }
                         }
@@ -310,11 +250,30 @@ namespace LoraInternOnlin.Controllers
                 }
                 catch (SqlException ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex);
+                    Debug.WriteLine(ex);
                 }
                 sqlConn.Close();
             }
             return Tuple.Create(hankrecords, lorarecords);
+        }
+
+        public Chart CreateChart(DateTime[] hanktimelist,object[] hankvaluelist,DateTime[] loratimelist,object[] loravaluelist)
+        {
+            var chart = new Chart(width: 1000, height: 300)
+                .AddLegend("Lora Clients")
+                .AddSeries(
+                name: "Hank",
+                chartType: "line",
+                xValue: hanktimelist,
+                yValues: hankvaluelist)
+                .AddSeries(
+                name: "Lora",
+                chartType: "line",
+                xValue: loratimelist,
+                yValues: loravaluelist)
+                .Write("png");
+
+            return chart;
         }
     }
 }
