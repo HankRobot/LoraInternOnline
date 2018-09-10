@@ -130,52 +130,7 @@ namespace LoraInternOnlin.Controllers
                 
             return null;
         }
-
-        public class SensorData
-        {
-            public DateTime Time
-            {
-                get;
-                set;
-            }
-
-            public object Dust
-            {
-                get;
-                set;
-            }
-
-            public object UV
-            {
-                get;
-                set;
-            }
-
-            public object Temp
-            {
-                get;
-                set;
-            }
-
-            public object Pressure
-            {
-                get;
-                set;
-            }
-
-            public object Humidity
-            {
-                get;
-                set;
-            }
-
-            public object RSSI
-            {
-                get;
-                set;
-            }
-        }
-
+        
         public Tuple<List<SensorData>,List<SensorData>> ConnectSQL()
         {
             SqlConnectionStringBuilder sql = new SqlConnectionStringBuilder();
@@ -188,7 +143,6 @@ namespace LoraInternOnlin.Controllers
 
             //string retrieve = string.Format("select * from (select Row_Number() over (order by TIMESUBMIT) as RowIndex, * from LORA_TABLE) as Sub Where Sub.RowIndex >= {0} and Sub.RowIndex <= {1};", 0, 1000000);
             //string retrieve = "SELECT * FROM LORA_TABLE;";
-
             string retrieve = string.Format("select * from(select Row_Number() over (order by TIMESUBMIT) as RowIndex, * from LORA_TABLE) " +
                 "as Sub where TimeSubmit >= '{0}' and TimeSubmit <='{1}';", date.ToString("MM-dd-yyyy HH:mm:ss"), date2.ToString("MM-dd-yyyy HH:mm:ss"));
 
@@ -275,5 +229,50 @@ namespace LoraInternOnlin.Controllers
 
             return chart;
         }
-    }
+
+        public class SensorData
+        {
+            public DateTime Time
+            {
+                get;
+                set;
+            }
+
+            public object Dust
+            {
+                get;
+                set;
+            }
+
+            public object UV
+            {
+                get;
+                set;
+            }
+
+            public object Temp
+            {
+                get;
+                set;
+            }
+
+            public object Pressure
+            {
+                get;
+                set;
+            }
+
+            public object Humidity
+            {
+                get;
+                set;
+            }
+
+            public object RSSI
+            {
+                get;
+                set;
+            }
+        }
+    }   
 }
