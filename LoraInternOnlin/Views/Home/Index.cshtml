@@ -9,9 +9,9 @@
 </div>
 
 <div>
-    <button onclick="lastweek('#dust', 'dustChart')" id="dustweek">Last Week</button>
-    <button onclick="lastmonth('#dust', 'dustChart')" id="dustmonth">Last Month</button>
-    <button onclick="lastyear('#dust', 'dustChart')" id="dustyear">Last Year</button>
+    <button style="background-color:azure" onclick="lastweek('#dust','#dustweek','#dustmonth','#dustyear', 'dustChart')" id="dustweek">Last Week</button>
+    <button style="background-color:lightblue" onclick="lastmonth('#dust','#dustmonth','#dustweek','#dustyear', 'dustChart')" id="dustmonth">Last Month</button>
+    <button style="background-color:lightblue" onclick="lastyear('#dust','#dustyear','#dustweek','#dustmonth', 'dustChart')" id="dustyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -20,9 +20,9 @@
 </div>
 
 <div>
-    <button onclick="lastweek('#uv', 'uvChart')" id="dustweek">Last Week</button>
-    <button onclick="lastmonth('#uv', 'uvChart')" id="dustmonth">Last Month</button>
-    <button onclick="lastyear('#uv', 'uvChart')" id="dustyear">Last Year</button>
+    <button style="background-color:azure" onclick="lastweek('#uv','#uvweek','#uvmonth','#uvyear','uvChart')" id="uvweek">Last Week</button>
+    <button style="background-color:lightblue" onclick="lastmonth('#uv','#uvmonth','#uvweek','#uvyear','uvChart')" id="uvmonth">Last Month</button>
+    <button style="background-color:lightblue" onclick="lastyear('#uv','#uvyear','#uvweek','#uvmonth','uvChart')" id="uvyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -31,42 +31,42 @@
 </div>
 
 <div>
-    <button onclick="lastweek('#temperature', 'tempChart')" id="dustweek">Last Week</button>
-    <button onclick="lastmonth('#temperature', 'tempChart')" id="dustmonth">Last Month</button>
-    <button onclick="lastyear('#temperature', 'tempChart')" id="dustyear">Last Year</button>
+    <button style="background-color:azure" onclick="lastweek('#temp','#tempweek','#tempmonth','#tempyear','tempChart')" id="tempweek">Last Week</button>
+    <button style="background-color:lightblue" onclick="lastmonth('#temp','#tempmonth','#tempweek','#tempyear','tempChart')" id="tempmonth">Last Month</button>
+    <button style="background-color:lightblue"onclick="lastyear('#temp','#tempyear','#tempweek','#tempmonth','tempChart')" id="tempyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
     <p class="lead">Temperature(°C)</p>
-    <img id="temperature" src="@Url.Action("tempChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
+    <img id="temp" src="@Url.Action("tempChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
 </div>
 
 <div>
-    <button onclick="lastweek('#pressure', 'presChart')" id="dustweek">Last Week</button>
-    <button onclick="lastmonth('#pressure', 'presChart')" id="dustmonth">Last Month</button>
-    <button onclick="lastyear('#pressure', 'presChart')" id="dustyear">Last Year</button>
+    <button style="background-color:azure" onclick="lastweek('#pres','#presweek','#presmonth','#presyear', 'presChart')" id="presweek">Last Week</button>
+    <button style="background-color:lightblue" onclick="lastmonth('#pres','#presmonth','#presweek','#presyear', 'presChart')" id="presmonth">Last Month</button>
+    <button style="background-color:lightblue" onclick="lastyear('#pres','#presyear','#presweek','#presmonth', 'presChart')" id="presyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
     <p class="lead">Pressure(Pa)</p>
-    <img id="pressure" src="@Url.Action("presChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
+    <img id="pres" src="@Url.Action("presChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
 </div>
 
 <div>
-    <button onclick="lastweek('#humidity', 'humChart')" id="dustweek">Last Week</button>
-    <button onclick="lastmonth('#humidity', 'humChart')" id="dustmonth">Last Month</button>
-    <button onclick="lastyear('#humidity', 'humChart')" id="dustyear">Last Year</button>
+    <button style="background-color:azure" onclick="lastweek('#hum','#humweek','#hummonth','#humyear', 'humChart')" id="humweek">Last Week</button>
+    <button style="background-color:lightblue" onclick="lastmonth('#hum','#hummonth','#humweek','#humyear', 'humChart')" id="hummonth">Last Month</button>
+    <button style="background-color:lightblue" onclick="lastyear('#hum','#humyear','#humweek','#hummonth', 'humChart')" id="humyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
     <p class="lead">Humidity(%)</p>
-    <img id="humidity" src="@Url.Action("humChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
+    <img id="hum" src="@Url.Action("humChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
 </div>
 
 <div>
-    <button onclick="lastweek('#rssi', 'RSSIChart')" id="dustweek">Last Week</button>
-    <button onclick="lastmonth('#rssi', 'RSSIChart')" id="dustmonth">Last Month</button>
-    <button onclick="lastyear('#rssi', 'RSSIChart')" id="dustyear">Last Year</button>
+    <button style="background-color:azure" onclick="lastweek('#rssi','#rssiweek','#rssimonth','#rssiyear', 'RSSIChart')" id="rssiweek">Last Week</button>
+    <button style="background-color:lightblue" onclick="lastmonth('#rssi','#rssimonth','#rssiweek','#rssiyear', 'RSSIChart')" id="rssimonth">Last Month</button>
+    <button style="background-color:lightblue" onclick="lastyear('#rssi','#rssiyear','#rssiweek','#rssimonth', 'RSSIChart')" id="rssiyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -78,19 +78,44 @@
 
 <script type="text/javascript">
 
-    function lastweek(id, chartName) {
+    function lastweek(id, id1, id2, id3, chartName) {
+        $(id1).prop("disabled", true);
+        $(id2).prop("disabled", false);
+        $(id3).prop("disabled", false);
+
+        $(id1).attr('style', 'background-color:azure');
+        $(id2).attr('style', 'background-color:lightblue');
+        $(id3).attr('style', 'background-color:lightblue');
+
+
         var inStr = '@Url.Action("xChart","Home",new {date=DateTime.Now.AddDays(-7)})';
         inStr = inStr.replace("xChart", chartName);
         $(id).attr('src', inStr);
     }
         
-    function lastmonth(id, chartName) {
+    function lastmonth(id, id1, id2, id3, chartName) {
+        $(id1).prop("disabled", true);
+        $(id2).prop("disabled", false);
+        $(id3).prop("disabled", false);
+
+        $(id1).attr('style', 'background-color:azure');
+        $(id2).attr('style', 'background-color:lightblue');
+        $(id3).attr('style', 'background-color:lightblue');
+
         var inStr = '@Url.Action("xChart","Home",new {date=DateTime.Now.AddMonths(-1)})';
         inStr = inStr.replace("xChart", chartName);
         $(id).attr('src', inStr);
     }
 
-    function lastyear(id, chartName) {
+    function lastyear(id, id1, id2, id3, chartName) {
+        $(id1).prop("disabled", true);
+        $(id2).prop("disabled", false);
+        $(id3).prop("disabled", false);
+
+        $(id1).attr('style', 'background-color:azure');
+        $(id2).attr('style', 'background-color:lightblue');
+        $(id3).attr('style', 'background-color:lightblue');
+
         var inStr = '@Url.Action("xChart","Home",new {date=DateTime.Now.AddYears(-1)})';
         inStr = inStr.replace("xChart", chartName);
         $(id).attr('src', inStr);
