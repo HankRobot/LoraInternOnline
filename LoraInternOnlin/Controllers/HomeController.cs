@@ -10,6 +10,8 @@ namespace LoraInternOnlin.Controllers
 {
     public class HomeController : Controller
     {
+        DateTime date = DateTime.Now.AddDays(-7);
+
         public ActionResult Index()
         {
             return View();
@@ -29,9 +31,9 @@ namespace LoraInternOnlin.Controllers
             return View();
         }
 
-        public ActionResult dustChart()
+        public WebImage dustChart(DateTime date)
         {
-            var tuple = ConnectSQL();
+            var tuple = ConnectSQL(date);
             var hankrecords = tuple.Item1;
             var lorarecords = tuple.Item2;
 
@@ -41,14 +43,14 @@ namespace LoraInternOnlin.Controllers
             var dusttimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var dustvaluelist1 = lorarecords.Select(i => i.Dust).ToArray();
 
-            var rssichart = CreateChart(dusttimelist, dustvaluelist, dusttimelist1, dustvaluelist1);
+            var dustchart = CreateChart(dusttimelist, dustvaluelist, dusttimelist1, dustvaluelist1);
 
-            return null;
+            return dustchart.ToWebImage();
         }
 
-        public ActionResult uvChart()
+        public WebImage uvChart(DateTime date)
         {
-            var tuple = ConnectSQL();
+            var tuple = ConnectSQL(date);
             var hankrecords = tuple.Item1;
             var lorarecords = tuple.Item2;
 
@@ -58,14 +60,14 @@ namespace LoraInternOnlin.Controllers
             var uvtimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var uvvaluelist1 = lorarecords.Select(i => i.UV).ToArray();
 
-            var rssichart = CreateChart(uvtimelist, uvvaluelist, uvtimelist1, uvvaluelist1);
+            var uvchart = CreateChart(uvtimelist, uvvaluelist, uvtimelist1, uvvaluelist1);
 
-            return null;
+            return uvchart.ToWebImage();
         }
 
-        public ActionResult tempChart()
+        public WebImage tempChart(DateTime date)
         {
-            var tuple = ConnectSQL();
+            var tuple = ConnectSQL(date);
             var hankrecords = tuple.Item1;
             var lorarecords = tuple.Item2;
 
@@ -75,14 +77,14 @@ namespace LoraInternOnlin.Controllers
             var temptimelist1 = lorarecords.Select(i => i.Time).ToArray();
             var tempvaluelist1 = lorarecords.Select(i => i.Temp).ToArray();
 
-            var rssichart = CreateChart(temptimelist, tempvaluelist, temptimelist1, tempvaluelist1);
+            var tempchart = CreateChart(temptimelist, tempvaluelist, temptimelist1, tempvaluelist1);
 
             return null;
         }
 
-        public ActionResult presChart()
+        public WebImage presChart(DateTime date)
         {
-            var tuple = ConnectSQL();
+            var tuple = ConnectSQL(date);
             var hankrecords = tuple.Item1;
             var lorarecords = tuple.Item2;
 
@@ -97,9 +99,9 @@ namespace LoraInternOnlin.Controllers
             return null;
         }
 
-        public ActionResult humChart()
+        public WebImage humChart(DateTime date)
         {
-            var tuple = ConnectSQL();
+            var tuple = ConnectSQL(date);
             var hankrecords = tuple.Item1;
             var lorarecords = tuple.Item2;
 
@@ -114,9 +116,9 @@ namespace LoraInternOnlin.Controllers
             return null;
         }
 
-        public ActionResult RSSIChart()
+        public WebImage RSSIChart(DateTime date)
         {
-            var tuple = ConnectSQL();
+            var tuple = ConnectSQL(date);
             var hankrecords = tuple.Item1;
             var lorarecords = tuple.Item2;
 
@@ -127,22 +129,19 @@ namespace LoraInternOnlin.Controllers
             var rssivaluelist1 = lorarecords.Select(i => i.RSSI).ToArray();
 
             var rssichart = CreateChart(rssitimelist, rssivaluelist, rssitimelist1, rssivaluelist1);
-                
+
             return null;
         }
         
-        public Tuple<List<SensorData>,List<SensorData>> ConnectSQL()
+        public Tuple<List<SensorData>,List<SensorData>> ConnectSQL(DateTime date)
         {
             SqlConnectionStringBuilder sql = new SqlConnectionStringBuilder();
 
-            DateTime date = DateTime.Now.AddDays(-7);
             DateTime date2 = DateTime.Now;
 
             Debug.WriteLine(date, "date a week ago");
             Debug.WriteLine(date2, "today");
 
-            //string retrieve = string.Format("select * from (select Row_Number() over (order by TIMESUBMIT) as RowIndex, * from LORA_TABLE) as Sub Where Sub.RowIndex >= {0} and Sub.RowIndex <= {1};", 0, 1000000);
-            //string retrieve = "SELECT * FROM LORA_TABLE;";
             string retrieve = string.Format("select * from(select Row_Number() over (order by TIMESUBMIT) as RowIndex, * from LORA_TABLE) " +
                 "as Sub where TimeSubmit >= '{0}' and TimeSubmit <='{1}';", date.ToString("MM-dd-yyyy HH:mm:ss"), date2.ToString("MM-dd-yyyy HH:mm:ss"));
 

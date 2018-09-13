@@ -8,34 +8,86 @@
     <p><a href="https://github.com/HankRobot/LoraInternOnline" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
+<div>
+    <button onclick="lastweek()" id="dustweek">Last Week</button>
+    <button onclick="lastmonth()" id="dustmonth">Last Month</button>
+    <button onclick="lastyear()" id="dustyear">Last Year</button>
+</div>
+
 <div class="jumbotron">
     <p class="lead">Dust(kg/m^-3)</p>
-    <img src="@Url.Action("dustChart")" />
+    <img id="dust" src="@Url.Action("dustChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
+</div>
+
+<div>
+    <button id="uvweek">Last Week</button>
+    <button id="uvmonth">Last Month</button>
+    <button id="uvyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
     <p class="lead">UV(mW/cm^-2)</p>
-    <img src="@Url.Action("uvChart")" />
+    <img id="uv" src="@Url.Action("uvChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
+</div>
+
+<div>
+    <button id="tempweek">Last Week</button>
+    <button id="tempmonth">Last Month</button>
+    <button id="tempyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
     <p class="lead">Temperature(°C)</p>
-    <img src="@Url.Action("tempChart")" />
+    <img id="temperature" src="@Url.Action("tempChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
+</div>
+
+<div>
+    <button id="presweek">Last Week</button>
+    <button id="presmonth">Last Month</button>
+    <button id="presyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
     <p class="lead">Pressure(Pa)</p>
-    <img src="@Url.Action("presChart")" />
+    <img id="pressure" src="@Url.Action("presChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
+</div>
+
+<div>
+    <button id="humweek">Last Week</button>
+    <button id="hummonth">Last Month</button>
+    <button id="humyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
     <p class="lead">Humidity(%)</p>
-    <img src="@Url.Action("humChart")" />
+    <img id="humidity" src="@Url.Action("humChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
+</div>
+
+<div>
+    <button id="rssiweek">Last Week</button>
+    <button id="rssimonth">Last Month</button>
+    <button id="rssiyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
     <p class="lead">RSSI</p>
-    <img src="@Url.Action("RSSIChart")" />
+    <img id="rssi" src="@Url.Action("RSSIChart","Home",new {date=DateTime.Now.AddDays(-7)})" />
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script type="text/javascript">
+
+    function lastweek() {
+        $("#dust").attr('src', '@Url.Action("dustChart","Home",new {date=DateTime.Now.AddDays(-7)})');
+    }
+        
+    function lastmonth() {
+        $("#dust").attr('src', '@Url.Action("dustChart","Home",new {date=DateTime.Now.AddMonths(-1)})');
+    }
+
+    function lastyear() {
+        $("#dust").attr('src', '@Url.Action("dustChart","Home",new {date=DateTime.Now.AddYears(-1)})');
+    }
+
+</script>
