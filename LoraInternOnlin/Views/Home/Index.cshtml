@@ -9,9 +9,9 @@
 </div>
 
 <div>
-    <button onclick="lastweek()" id="dustweek">Last Week</button>
-    <button onclick="lastmonth()" id="dustmonth">Last Month</button>
-    <button onclick="lastyear()" id="dustyear">Last Year</button>
+    <button onclick="lastweek('#dust', 'dustChart')" id="dustweek">Last Week</button>
+    <button onclick="lastmonth('#dust', 'dustChart')" id="dustmonth">Last Month</button>
+    <button onclick="lastyear('#dust', 'dustChart')" id="dustyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -20,9 +20,9 @@
 </div>
 
 <div>
-    <button id="uvweek">Last Week</button>
-    <button id="uvmonth">Last Month</button>
-    <button id="uvyear">Last Year</button>
+    <button onclick="lastweek('#uv', 'uvChart')" id="dustweek">Last Week</button>
+    <button onclick="lastmonth('#uv', 'uvChart')" id="dustmonth">Last Month</button>
+    <button onclick="lastyear('#uv', 'uvChart')" id="dustyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -31,9 +31,9 @@
 </div>
 
 <div>
-    <button id="tempweek">Last Week</button>
-    <button id="tempmonth">Last Month</button>
-    <button id="tempyear">Last Year</button>
+    <button onclick="lastweek('#temperature', 'tempChart')" id="dustweek">Last Week</button>
+    <button onclick="lastmonth('#temperature', 'tempChart')" id="dustmonth">Last Month</button>
+    <button onclick="lastyear('#temperature', 'tempChart')" id="dustyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -42,9 +42,9 @@
 </div>
 
 <div>
-    <button id="presweek">Last Week</button>
-    <button id="presmonth">Last Month</button>
-    <button id="presyear">Last Year</button>
+    <button onclick="lastweek('#pressure', 'presChart')" id="dustweek">Last Week</button>
+    <button onclick="lastmonth('#pressure', 'presChart')" id="dustmonth">Last Month</button>
+    <button onclick="lastyear('#pressure', 'presChart')" id="dustyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -53,9 +53,9 @@
 </div>
 
 <div>
-    <button id="humweek">Last Week</button>
-    <button id="hummonth">Last Month</button>
-    <button id="humyear">Last Year</button>
+    <button onclick="lastweek('#humidity', 'humChart')" id="dustweek">Last Week</button>
+    <button onclick="lastmonth('#humidity', 'humChart')" id="dustmonth">Last Month</button>
+    <button onclick="lastyear('#humidity', 'humChart')" id="dustyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -64,9 +64,9 @@
 </div>
 
 <div>
-    <button id="rssiweek">Last Week</button>
-    <button id="rssimonth">Last Month</button>
-    <button id="rssiyear">Last Year</button>
+    <button onclick="lastweek('#rssi', 'RSSIChart')" id="dustweek">Last Week</button>
+    <button onclick="lastmonth('#rssi', 'RSSIChart')" id="dustmonth">Last Month</button>
+    <button onclick="lastyear('#rssi', 'RSSIChart')" id="dustyear">Last Year</button>
 </div>
 
 <div class="jumbotron">
@@ -78,16 +78,22 @@
 
 <script type="text/javascript">
 
-    function lastweek() {
-        $("#dust").attr('src', '@Url.Action("dustChart","Home",new {date=DateTime.Now.AddDays(-7)})');
+    function lastweek(id, chartName) {
+        var inStr = '@Url.Action("xChart","Home",new {date=DateTime.Now.AddDays(-7)})';
+        inStr = inStr.replace("xChart", chartName);
+        $(id).attr('src', inStr);
     }
         
-    function lastmonth() {
-        $("#dust").attr('src', '@Url.Action("dustChart","Home",new {date=DateTime.Now.AddMonths(-1)})');
+    function lastmonth(id, chartName) {
+        var inStr = '@Url.Action("xChart","Home",new {date=DateTime.Now.AddMonths(-1)})';
+        inStr = inStr.replace("xChart", chartName);
+        $(id).attr('src', inStr);
     }
 
-    function lastyear() {
-        $("#dust").attr('src', '@Url.Action("dustChart","Home",new {date=DateTime.Now.AddYears(-1)})');
+    function lastyear(id, chartName) {
+        var inStr = '@Url.Action("xChart","Home",new {date=DateTime.Now.AddYears(-1)})';
+        inStr = inStr.replace("xChart", chartName);
+        $(id).attr('src', inStr);
     }
 
 </script>
