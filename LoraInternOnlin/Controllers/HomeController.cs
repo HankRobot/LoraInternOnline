@@ -154,10 +154,10 @@ namespace LoraInternOnlin.Controllers
             List<SensorData> lorarecords = new List<SensorData>();
 
             //build conenction string
-            sql.DataSource = "lorawan-hank.database.windows.net";
-            sql.UserID = "Hank";
-            sql.Password = "Lorawan1234";
-            sql.InitialCatalog = "LoraWan Database";
+            sql.DataSource = "loraintern.database.windows.net";
+            sql.UserID = "lora";
+            sql.Password = "intern1234@";
+            sql.InitialCatalog = "LoraIntern";
 
             using (SqlConnection sqlConn = new SqlConnection(sql.ConnectionString))
             {
