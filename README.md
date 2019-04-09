@@ -14,7 +14,9 @@ Hey guys Hank here! This project is for Dr Pu's Lora Internet of Things Network 
 1. Select x64 for your Debug Target and then click Debug(the green play button). If your code works, you will see your browser initializing and then a web page will appear on localhost.
 2. To run it online, you need to create a Web App with Azure.
 
-# Contribute (Will write this when I am finishing my internship)
-1. 
+# Contribute
+1. Unlike the UWP version, the Web App does not allow you to download datasets.
+2. Unable to search a certain time-frame for certain datasets.
+3. Very simple UI, not very easy to observe trendlines.
 
 #HAPPY CODING!!! :heart:
