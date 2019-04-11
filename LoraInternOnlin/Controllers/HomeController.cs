@@ -10,7 +10,7 @@ namespace LoraInternOnlin.Controllers
 {
     public class HomeController : Controller
     {
-        DateTime date = DateTime.Now.AddDays(-7);
+        //DateTime date = DateTime.Now.AddDays(-7);
 
         public ActionResult Index()
         {
