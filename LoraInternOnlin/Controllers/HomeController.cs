@@ -11,16 +11,15 @@ namespace LoraInternOnlin.Controllers
     public class HomeController : Controller
     {
         //DateTime date = DateTime.Now.AddDays(-7);
-
         public ActionResult Index()
         {
+            ViewBag.MyString = "Welcome to LoraWAN Network by Hank Bot";
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
@@ -132,7 +131,7 @@ namespace LoraInternOnlin.Controllers
 
             return null;
         }
-        
+
         public Tuple<List<SensorData>,List<SensorData>> ConnectSQL(DateTime date)
         {
             SqlConnectionStringBuilder sql = new SqlConnectionStringBuilder();
