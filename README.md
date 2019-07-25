@@ -1,5 +1,5 @@
 # LoraInternOnline
-Online Version of Visualizing data of Lora Gateway DataBase -> https://lorawebsites.azurewebsites.net/
+Online Version of Visualizing data of Lora Gateway DataBase -> https://hankbotsensors.azurewebsites.net/
 
 # Introduction :laughing:
 Hey guys Hank here! This project is for Dr Pu's Lora Internet of Things Network Internship Project! If you have any questions please ask!
